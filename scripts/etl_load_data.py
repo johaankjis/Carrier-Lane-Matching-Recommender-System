@@ -11,7 +11,7 @@ from pathlib import Path
 
 def load_kaggle_dataset():
     """Load the transportation dataset from Kaggle"""
-    print("[v0] Loading dataset from Kaggle...")
+    print("[] Loading dataset from Kaggle...")
     
     try:
         # Load the latest version of the dataset
@@ -21,20 +21,20 @@ def load_kaggle_dataset():
             "",  # Load all files
         )
         
-        print(f"[v0] Dataset loaded successfully. Shape: {df.shape}")
-        print(f"[v0] Columns: {df.columns.tolist()}")
-        print(f"[v0] First 5 records:\n{df.head()}")
+        print(f"[] Dataset loaded successfully. Shape: {df.shape}")
+        print(f"[] Columns: {df.columns.tolist()}")
+        print(f"[] First 5 records:\n{df.head()}")
         
         return df
     
     except Exception as e:
-        print(f"[v0] Error loading dataset: {e}")
+        print(f"[] Error loading dataset: {e}")
         # Return sample data for development
         return create_sample_data()
 
 def create_sample_data():
     """Create sample transportation data for development"""
-    print("[v0] Creating sample data for development...")
+    print("[] Creating sample data for development...")
     
     sample_data = {
         'shipment_id': [f'SH{i:05d}' for i in range(1, 101)],
@@ -69,12 +69,12 @@ def save_raw_data(df):
     with open(output_file, 'w') as f:
         json.dump(data_dict, f, indent=2)
     
-    print(f"[v0] Raw data saved to {output_file}")
-    print(f"[v0] Total records: {len(data_dict)}")
+    print(f"[] Raw data saved to {output_file}")
+    print(f"[] Total records: {len(data_dict)}")
 
 def main():
     """Main ETL execution"""
-    print("[v0] Starting ETL Pipeline - Data Loading")
+    print("[] Starting ETL Pipeline - Data Loading")
     
     # Load dataset
     df = load_kaggle_dataset()
@@ -82,7 +82,7 @@ def main():
     # Save raw data
     save_raw_data(df)
     
-    print("[v0] ETL Step 1 Complete: Data loaded and saved")
+    print("[] ETL Step 1 Complete: Data loaded and saved")
     
     return df
 
